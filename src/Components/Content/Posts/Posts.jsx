@@ -1,17 +1,18 @@
 import React from 'react';
 import Post from './Post-item/Post-item';
 
-const Posts = ({posts, addPost, newPostText, updateNewPostText}) => {
+const Posts = ({posts, newPostText, dispatch}) => {
 
      let newPostElement = React.createRef();
 
     const add = () => {
-        addPost();
+        dispatch({type: 'ADD-POST'})
     }
 
     const onPostChange = () => {
         let text = newPostElement.current.value;
-        updateNewPostText(text);
+        // dispatch.updateNewPostText(text);
+        dispatch({type: 'UPDATEN-NEW-POST-TEXT', newText: text})
     }
     return(
         <>  <div>
