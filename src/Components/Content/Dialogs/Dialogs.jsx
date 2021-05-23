@@ -1,9 +1,19 @@
 import React from 'react';
+import { sendMessageCreator, updateNewMEssageBodyCreator } from '../../../Redux/State';
 import DialogItem from './DialogItem/DialogItem';
 import './Dialogs.scss';
 import Message from './Message/Message';
 
-const Dialogs = ({dialogs ,message}) => {
+const Dialogs = ({dialogs ,message, messageBody, dispatch}) => {
+
+    let onSendMessageClick = () => {
+        dispatch(sendMessageCreator())
+    }
+
+    let onNewMessageChange = (e) => {
+        let body = e.target.value;
+        dispatch(updateNewMEssageBodyCreator(body))
+    }
 
     return(
         <div className="dialogs">
@@ -21,6 +31,14 @@ const Dialogs = ({dialogs ,message}) => {
                         <Message text={item.message}/>
                     )
                 })}
+                <div>
+                    <div>
+                        <textarea value={messageBody} onChange={onNewMessageChange} placeholder="Enter ypur message"></textarea>
+                    </div>
+                    <div>
+                        <button onClick={onSendMessageClick}>Send</button>
+                    </div>
+                </div>
             </div>
         </div>
     );
