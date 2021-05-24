@@ -21,7 +21,7 @@ const Posts = ({posts, newPostText, dispatch}) => {
                 My Posts
             </div> 
             <div>
-                <textarea onChange={onPostChange} ref={newPostElement} cols="30" rows="10" value={newPostText}/>
+                <textarea onChange={onPostChange} ref={newPostElement} value={newPostText}/>
                 <br/>
                 <button onClick={add}>Add post</button>
                 <div className="posts">

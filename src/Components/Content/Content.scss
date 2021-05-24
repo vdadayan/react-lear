@@ -20,3 +20,13 @@ $colorWhite: #FFF;
         
     }
 }
+.posts {
+    display: flex;
+    flex-wrap: wrap;
+    .post {
+        img {
+            width: 100px;
+        }
+    }
+    
+}
