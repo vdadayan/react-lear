@@ -1,3 +1,4 @@
+import { rerenderTree } from "..";
 import dialogsReducer from "./reducers/dialogReducer";
 import profileReducer from "./reducers/profileReducer";
 import sidebarReducer from "./reducers/sidebarReducer";
@@ -48,7 +49,22 @@ let store = {
     this._callSubscriber(this._state);
   }
 }
+export let addPost = () => {
+  let newPost = {
+    id: 3,
+    message: store._state.profilePage.newPostText,
+    likesCount: 0
+  };
 
+  store._state.profilePage.posts.push(newPost);
+  store._state.profilePage.newPostText = '';
+  rerenderTree(store._state);
+}
+
+export let updateNewPostText = (newText) => {
+  store._state.profilePage.newPostText = newText;
+  rerenderTree(store._state);
+}
 
 
 

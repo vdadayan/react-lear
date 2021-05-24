@@ -5,7 +5,7 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App.jsx';
 
-let rerenderTree = (state) => {
+export let rerenderTree = (state) => {
     ReactDOM.render(
         <React.StrictMode>
           <App state={state} dispatch={store.dispatch.bind(store)} />

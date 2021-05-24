@@ -3,6 +3,7 @@ import Dialogs from './Dialogs/Dialogs';
 import Profile from './Profile/Profile';
 import './Content.scss';
 import { BrowserRouter, NavLink, Route } from 'react-router-dom';
+import DialogsContainer from './Dialogs/DialogsContainer';
 
 const Content = ({dialogs, message, posts, newPostText, dispatch, messageBody}) => {
     return(
@@ -18,7 +19,7 @@ const Content = ({dialogs, message, posts, newPostText, dispatch, messageBody}) 
                     </ul>
                 </nav>
                 <Route path="/Profile" render={() => <Profile dispatch={dispatch} posts={posts} newPostText={newPostText}/>}/>
-                <Route path="/Dialogs" render={() => <Dialogs dispatch={dispatch} dialogs={dialogs} message={message} messageBody={messageBody}/>}/>
+                <Route path="/Dialogs" render={() => <DialogsContainer dispatch={dispatch} dialogs={dialogs} message={message} messageBody={messageBody}/>}/>
             </div> 
         </BrowserRouter>
     )
