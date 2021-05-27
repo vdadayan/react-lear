@@ -5,7 +5,7 @@ import './Content.scss';
 import { BrowserRouter, NavLink, Route } from 'react-router-dom';
 import DialogsContainer from './Dialogs/DialogsContainer';
 
-const Content = ({dialogs, message, posts, newPostText, dispatch, messageBody}) => {
+const Content = (props) => {
     return(
         <BrowserRouter>
             <div className="content">
@@ -18,8 +18,8 @@ const Content = ({dialogs, message, posts, newPostText, dispatch, messageBody}) 
                         <li><a to="#">Settings</a></li>
                     </ul>
                 </nav>
-                <Route path="/Profile" render={() => <Profile dispatch={dispatch} posts={posts} newPostText={newPostText}/>}/>
-                <Route path="/Dialogs" render={() => <DialogsContainer dispatch={dispatch} dialogs={dialogs} message={message} messageBody={messageBody}/>}/>
+                <Route path="/Profile" render={() => <Profile/>}/>
+                <Route path="/Dialogs" render={() => <DialogsContainer />}/>
             </div> 
         </BrowserRouter>
     )
