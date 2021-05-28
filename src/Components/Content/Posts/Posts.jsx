@@ -2,7 +2,6 @@ import React from 'react';
 import Post from './Post-item/Post-item';
 
 const Posts = ({posts, newPostText, updateNewPostText, addPost}) => {
-    console.log(addPost);
     let newPostElement = React.createRef();
 
     const add = () => {

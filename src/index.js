@@ -6,20 +6,11 @@ import './index.css';
 import App from './App.jsx';
 import {Provider} from 'react-redux';
 
-export let rerenderTree = (state) => {
-    ReactDOM.render(
-        <React.StrictMode>
-          <Provider store={store}>
-            <App />
-          </Provider>
-        </React.StrictMode>,
-        document.getElementById('root')
-      );
-}
-
-rerenderTree(store.getState())
-
-store.subscribe(()=> {
-  let state = store.getState()
-  rerenderTree(state)
-});
+ReactDOM.render(
+    <React.StrictMode>
+      <Provider store={store}>
+        <App />
+      </Provider>
+    </React.StrictMode>,
+    document.getElementById('root')
+  );
