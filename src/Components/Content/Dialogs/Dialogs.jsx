@@ -3,7 +3,13 @@ import DialogItem from './DialogItem/DialogItem';
 import './Dialogs.scss';
 import Message from './Message/Message';
 
-const Dialogs = ({dialogs ,message, messageBody, updeteNewMessageBody, sendMessage}) => {
+const Dialogs = (props) => {
+
+    let dialogs = props.dialogs.dialogs;
+    let message = props.dialogs.message;
+    let sendMessage = props.sendMessage;
+    let updeteNewMessageBody = props.updeteNewMessageBody;
+    let messageBody = props.messageBody;
 
     let onSendMessageClick = () => {
         sendMessage();
@@ -21,14 +27,14 @@ const Dialogs = ({dialogs ,message, messageBody, updeteNewMessageBody, sendMessa
 
                 {dialogs.map((item) => {
                     return(
-                        <DialogItem name={item.name} id={item.id}/>
+                        <DialogItem key={item.id} name={item.name} id={item.id}/>
                     )
                 })}
             </div>
             <div className="messages">
                 {message.map((item) => {
                     return(
-                        <Message text={item.message}/>
+                        <Message key={item.id} text={item.message}/>
                     )
                 })}
                 <div>
