@@ -3,11 +3,7 @@ const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 
 let initialState = {
-    users: [
-        // {id: 1, photoUrl: "https://s7.cdn.eg.ru/wp-content/uploads/2020/05/nag-pre022109.jpg", followed: false, fullName: 'Dmitry', status: 'I am a boss', location: {city: 'Minsk', country: 'Belarus'}},
-        // {id: 2, photoUrl: "https://s7.cdn.eg.ru/wp-content/uploads/2020/05/nag-pre022109.jpg", followed: true, fullName: 'Sasha', status: 'I am a boss too', location: {city: 'Moscow', country: 'Russia'}},
-        // {id: 3, photoUrl: "https://s7.cdn.eg.ru/wp-content/uploads/2020/05/nag-pre022109.jpg", followed: false, fullName: 'Andrew', status: 'I am a boss too', location: {city: 'Kiev', country: 'Ukrain'}},
-    ]
+    users: []
 }
 
 const usersReducer = (state = initialState, action) => {
@@ -38,7 +34,7 @@ const usersReducer = (state = initialState, action) => {
         case SET_USERS: {
             return {
                 ...state, 
-                users: [...action.users]
+                users: [...state.users, ...action.users]
             }
         }
     default: return state;
