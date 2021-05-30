@@ -13,6 +13,7 @@ const Content = (props) => {
                     <ul>
                         <li><NavLink to="/Profile">Profile</NavLink></li>
                         <li><NavLink to="/Dialogs">Messages</NavLink></li>
+                        <li><NavLink to="/Users">Users</NavLink></li>
                         <li><a to="#">News</a></li>
                         <li><a to="#">Music</a></li>
                         <li><a to="#">Settings</a></li>

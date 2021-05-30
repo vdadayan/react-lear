@@ -3,25 +3,25 @@ import './Users.scss';
 import * as axios from 'axios';
 import userPhoto from '../../assets/images/ava.png';
 
-const Users = (props) => {
-    if (props.users.length === 0) {
+class Users extends React.Component {
+    constructor(props) {
+        super(props);
         axios.get("https://social-network.samuraijs.com/api/1.0/users").then(response => {
-            props.setUsers(response.data.items);
+            this.props.setUsers(response.data.items);
         })
+    }
 
-
-    } 
-    
-    return <div className="users-wrapper">
+    render() {
+        return <div className="users-wrapper">
         {
-            props.users.map((item) => {
+            this.props.users.map((item) => {
                 return (
                     <div key={item.id} className="user">
                         <div className="user-nav">
                             <img src={item.photos.small != null ? item.photos.small : userPhoto} alt="avatar" />
                             {item.followed 
-                            ? <button onClick={() => {props.unfollow(item.id)}}>Follow</button> 
-                            : <button onClick={() => {props.follow(item.id)}}>Unfollow</button>}
+                            ? <button onClick={() => {this.props.unfollow(item.id)}}>Follow</button> 
+                            : <button onClick={() => {this.props.follow(item.id)}}>Unfollow</button>}
                         </div>
                         <div className="user-info">
                             <div>
@@ -37,8 +37,8 @@ const Users = (props) => {
                 )
             })
         }
-
-    </div>
+        </div>
+    }
 }
 
 export default Users;
