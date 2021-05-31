@@ -1,11 +1,13 @@
 import React from "react";
 import PostsContainer from "../Posts/Posts-container";
+import ProfileInfo from "./ProfileInfo";
 
 const Profile = (props) => {
+    console.log(props);
     return(
         <div>
             <main>
-                <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Ikea_logo.svg/1280px-Ikea_logo.svg.png" alt="ikea"/>
+                <ProfileInfo profile={props.profile}/>
                 <PostsContainer />
             </main>
         </div>

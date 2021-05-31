@@ -1,9 +1,9 @@
 import React from 'react';
-import Profile from './Profile/Profile';
 import { BrowserRouter, NavLink, Route } from 'react-router-dom';
 import DialogsContainer from './Dialogs/DialogsContainer';
 import UsersContainer from '../Users/UsersContainer';
 import './Content.scss';
+import ProfileContainer from './Profile/ProfileContainer';
 
 const Content = (props) => {
     return(
@@ -19,7 +19,7 @@ const Content = (props) => {
                         <li><a to="#">Settings</a></li>
                     </ul>
                 </nav>
-                <Route path="/Profile" render={() => <Profile/>}/>
+                <Route path="/Profile" render={() => <ProfileContainer/>}/>
                 <Route path="/Dialogs" render={() => <DialogsContainer />}/>
                 <Route path="/Users" render={() => <UsersContainer />}/>
             </div> 
