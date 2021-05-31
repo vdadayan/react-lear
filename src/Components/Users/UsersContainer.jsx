@@ -1,34 +1,33 @@
 import React from 'react';
 import * as axios from 'axios';
 import { connect } from 'react-redux';
-import { followAC, serUsersAC, unfollowAC, setCurrentPageAC, setTotalUsersCountAC, toogleIsFetchingAC } from '../../Redux/reducers/usersReducer';
+import { follow, serUsers, unfollow, setCurrentPage, setTotalUsersCount, toogleIsFetching } from '../../Redux/reducers/usersReducer';
 import Users from './Users';
 import Preloader from '../Preloader/Preloader';
 
 
 class UsersAPIComponent extends React.Component {
     componentDidMount() {
-        this.props.setIsFetching(false);
+        this.props.toogleIsFetching(false);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${this.props.currentPage}&count=${this.props.pageSize}`)
         .then(response => {
-            this.props.setIsFetching(true);
-            this.props.setUsers(response.data.items);
+            this.props.toogleIsFetching(true);
+            this.props.serUsers(response.data.items);
             this.props.setTotalUsersCount(response.data.totalCount);
             })
 
     }
     onPageChanged = (pageNumber) => {
-        this.props.setIsFetching(false);
+        this.props.toogleIsFetching(false);
         this.props.setCurrentPage(pageNumber);
         axios.get(`https://social-network.samuraijs.com/api/1.0/users?page=${pageNumber}&count=${this.props.pageSize}`)
         .then(response => {
-            this.props.setUsers(response.data.items);
-            this.props.setIsFetching(true);
+            this.props.serUsers(response.data.items);
+            this.props.toogleIsFetching(true);
         })
     }
 
     render() {
-        console.log(this.props);
         return <>
             {!this.props.isFetching ? <Preloader />: null}
             <Users totalUsersCount={this.props.totalUsersCount}
@@ -44,7 +43,6 @@ class UsersAPIComponent extends React.Component {
     }
 }
 
-
 let mapStateToProps = (state) => {
     return {
         users: state.usersPage.users,
@@ -55,29 +53,6 @@ let mapStateToProps = (state) => {
     }
 }
 
-let mapDispatchToProps = (dispatch) => {
-    return {
-        follow: (userId) => {
-            dispatch(followAC(userId));
-        },
-        unfollow: (userId) => {
-            dispatch(unfollowAC(userId));
-        },
-        setUsers: (users) => {
-            dispatch(serUsersAC(users));
-        }
-        ,setCurrentPage: (pageNumber) => {
-            dispatch(setCurrentPageAC(pageNumber))
-        },
-        setTotalUsersCount: (totalCount) => {
-            dispatch(setTotalUsersCountAC(totalCount))
-        },
-        setIsFetching: (isFetching) => {
-            dispatch(toogleIsFetchingAC(isFetching))
-        },
-    }
-}
-
-const UsersContainer =  connect(mapStateToProps, mapDispatchToProps)(UsersAPIComponent);
+const UsersContainer =  connect(mapStateToProps, {follow, unfollow, serUsers, setCurrentPage, setTotalUsersCount, toogleIsFetching,})(UsersAPIComponent);
 
 export default UsersContainer;
