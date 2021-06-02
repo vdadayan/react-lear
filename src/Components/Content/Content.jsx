@@ -7,7 +7,6 @@ import ProfileContainer from './Profile/ProfileContainer';
 
 const Content = (props) => {
     return(
-        <BrowserRouter>
             <div className="content">
                 <nav>
                     <ul>
@@ -23,7 +22,6 @@ const Content = (props) => {
                 <Route path="/Dialogs" render={() => <DialogsContainer />}/>
                 <Route path="/Users" render={() => <UsersContainer />}/>
             </div> 
-        </BrowserRouter>
     )
 }
 
