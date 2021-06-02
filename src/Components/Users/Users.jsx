@@ -11,7 +11,6 @@ const Users = (props) => {
     for (let i = 1; i <= pagesCount; i++) {
         pages.push(i);
     }
-    
     return (
         <div className="users-wrapper">
             <div>
@@ -39,8 +38,9 @@ const Users = (props) => {
                                 />
                             </NavLink>
                             {item.followed ? (
-                                <button
+                                <button disabled={props.followingInProgress.some(id => id === item.id)}
                                     onClick={() => {
+                                        props.toggleFollowingProgress(true, item.id)
                                         axios.delete(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {
                                             withCredentials: true,
                                             headers: {
@@ -51,14 +51,16 @@ const Users = (props) => {
                                                 if (response.data.resultCode === 0) {
                                                     props.unfollow(item.id);
                                                 }
+                                                props.toggleFollowingProgress(false, item.id)
                                             })
                                     }}
                                 >
                                     Follow
                                 </button>
                             ) : (
-                                <button
+                                <button disabled={props.followingInProgress.some(id => id === item.id)}
                                     onClick={() => {
+                                        props.toggleFollowingProgress(true, item.id)
                                         axios.post(`https://social-network.samuraijs.com/api/1.0/follow/${item.id}`, {}, {
                                             withCredentials: true,
                                             headers: {
@@ -69,6 +71,7 @@ const Users = (props) => {
                                                 if (response.data.resultCode === 0) {
                                                     props.follow(item.id);
                                                 }
+                                                props.toggleFollowingProgress(false, item.id)
                                             })
                                     }}
                                 >
