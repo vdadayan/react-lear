@@ -1,6 +1,5 @@
 import * as axios from "axios";
 
-
 const instance = axios.create({
     withCredentials: true,
     baseURL: "https://social-network.samuraijs.com/api/1.0/",
@@ -12,9 +11,11 @@ const instance = axios.create({
 export const userAPI = {
     getUsers(currentPage = 1, pageSize = 5) {
         return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
+    },
+    follow(userId) {
+        return instance.post(`follow/${userId}`)
+    },
+    unfollow(userId) {
+        return instance.delete(`follow/${userId}`)
     }
 }
-
-// export const getUsers = (currentPage = 1, pageSize = 5) => {
-//     return instance.get(`users?page=${currentPage}&count=${pageSize}`).then(response => response.data)
-// }

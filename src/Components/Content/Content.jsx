@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, NavLink, Route } from 'react-router-dom';
+import { NavLink, Route } from 'react-router-dom';
 import DialogsContainer from './Dialogs/DialogsContainer';
 import UsersContainer from '../Users/UsersContainer';
 import './Content.scss';
