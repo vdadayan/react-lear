@@ -4,6 +4,7 @@ import DialogsContainer from './Dialogs/DialogsContainer';
 import UsersContainer from '../Users/UsersContainer';
 import ProfileContainer from './Profile/ProfileContainer';
 import './Content.scss';
+import Login from './Login/Login';
 
 const Content = (props) => {
     return(
@@ -21,6 +22,7 @@ const Content = (props) => {
                 <Route path="/Profile/:userId?" render={() => <ProfileContainer/>}/>
                 <Route path="/Dialogs" render={() => <DialogsContainer />}/>
                 <Route path="/Users" render={() => <UsersContainer />}/>
+                <Route path="/Login" render={() => <Login />}/>
             </div> 
     )
 }

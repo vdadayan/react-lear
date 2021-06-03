@@ -40,7 +40,6 @@ const usersReducer = (state = initialState, action) => {
                     return u;
                 }),
             }
-
         }
         case SET_USERS: {
             return {
@@ -89,11 +88,11 @@ export const toggleFollowingProgress = (isFetching, userId) => ({type: TOGGLE_IS
 export const getUsers = (currentPage, pageSize) => {
     return (dispatch) => {
         dispatch(toogleIsFetching(false));
-
         userAPI.getUsers(currentPage, pageSize).then(response => {
             dispatch(toogleIsFetching(true));
             dispatch(serUsers(response.items));
             dispatch(setTotalUsersCount(response.totalCount));
+            dispatch(setCurrentPage(currentPage));
             })
     }
 }
