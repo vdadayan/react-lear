@@ -13,14 +13,9 @@ const Users = (props) => {
         <div className="users-wrapper">
             <div>
                 {pages.map((p, i) => {
-                    
                     return (
-                        <span key = {i}
-                            onClick={() => {
-                                props.onPageChanged(p);
-                            }}
-                            className={props.currentPage === p ? "selected-page" : ""}
-                        >
+                        <span key = {i} onClick={() => { props.onPageChanged(p)}}
+                            className={props.currentPage === p ? "selected-page" : ""}>
                             {p}
                         </span>
                     );

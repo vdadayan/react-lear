@@ -24,7 +24,7 @@ const Posts = ({posts, newPostText, updateNewPostText, addPost}) => {
                 <div className="posts">
                     {posts.map((item) => {
                         return(
-                            <Post message={item.message} likesCount={item.likesCount} ket={item.id}/>
+                            <Post message={item.message} likesCount={item.likesCount} key={item.id}/>
                         )
                     })}
                 </div>
