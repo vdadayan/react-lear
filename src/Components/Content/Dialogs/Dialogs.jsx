@@ -1,5 +1,4 @@
 import React from 'react';
-import { Redirect } from 'react-router';
 import DialogItem from './DialogItem/DialogItem';
 import './Dialogs.scss';
 import Message from './Message/Message';
@@ -21,7 +20,6 @@ const Dialogs = (props) => {
 
         updeteNewMessageBody(body)
     }
-    if (!props.isAuth) return <Redirect to={"/Login"} />
 
     return(
         <div className="dialogs">
@@ -41,7 +39,7 @@ const Dialogs = (props) => {
                 })}
                 <div>
                     <div>
-                        <textarea value={messageBody} onChange={onNewMessageChange} placeholder="Enter ypur message"></textarea>
+                        <textarea value={messageBody} onChange={onNewMessageChange} placeholder="Enter your message"></textarea>
                     </div>
                     <div>
                         <button onClick={onSendMessageClick}>Send</button>
