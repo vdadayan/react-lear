@@ -4,7 +4,6 @@ class ProfileStatus extends React.Component {
     state = {
         editMode: false,
         status: this.props.status
-    
     }
 
     acivateEditMode = () => {
@@ -25,8 +24,15 @@ class ProfileStatus extends React.Component {
        })
     }
 
+    componentDidUpdate(prevProps, prevState) {
+        if (prevProps.status !== this.props.status) {
+            this.setState({
+                status: this.props.status
+            })
+        }
+    }
+
     render() {
-        console.log(this.props);
         return (
             <div>
                 {!this.state.editMode && 
