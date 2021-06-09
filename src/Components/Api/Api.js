@@ -18,12 +18,18 @@ export const userAPI = {
     unfollow (userId) {
         return instance.delete(`follow/${userId}`)
     },
-    auth() {
-        return instance.get(`auth/me`)
-    },
     getProfile (userId) {
         console.warn('please use profileAPI')
         return profileAPI.getProfile(userId)
+    },
+    auth() {
+        return instance.get(`auth/me`)
+    },
+    login (email, password, rememberMe = false) {
+        return instance.post('auth/login', {email, password, rememberMe})
+    },
+    logOut () {
+        return instance.delete('auth/login')
     }
 }
 
