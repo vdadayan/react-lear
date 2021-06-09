@@ -1,7 +1,7 @@
-textarea.error {
+textarea.error, input.error {
     border: 1px solid red;
 }
 
-textarea.error + span  {
+textarea.error + span, input.error + span  {
     color: red;
 }

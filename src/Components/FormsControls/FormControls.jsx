@@ -1,15 +1,30 @@
 import React from 'react';
 import './FormControls.scss'
 
-export const TextArea = ({input, meta, ...props}) => {
+
+const FormControl = ({input, meta, child, ...props}) => {
     const hasError = meta.touched && meta.error;
 
     return(
         <div>
-            <textarea className={hasError && 'error'} {...input} {...props}/>
+            {props.children}
             {hasError &&
                 <span>{meta.error}</span>
             }
         </div>
     );
+}
+
+export const TextArea = (props) => {
+    const {input, meta, child, ...restProps} = props;
+   return (
+       <FormControl {...props}><textarea className={meta.touched && meta.error && 'error'} {...input} {...restProps}/></FormControl>
+   )
+}
+
+export const Input = (props) => {
+    const {input, meta, child, ...restProps} = props;
+   return (
+       <FormControl {...props}><input className={meta.touched && meta.error && 'error'} {...input} {...restProps}/></FormControl>
+   )
 }
