@@ -5,11 +5,12 @@ import { Input } from '../../FormsControls/FormControls';
 import {connect} from 'react-redux';
 import {login} from '../../../Redux/reducers/authReducer';
 import {Redirect} from 'react-router-dom';
+import "../../../Components/FormsControls/FormControls.scss";
 
 
 const LoginForm = (props) => {
     return (
-        <form onSubmit={props.handleSubmit}>
+        <form class="form-login" onSubmit={props.handleSubmit}>
             <div>
                 <Field placeholder="Email" name="email" component={Input} validate={[requiredField]}/>
             </div>
@@ -19,6 +20,10 @@ const LoginForm = (props) => {
             <div>
                 <Field component={Input} name="rememberMe" type="checkbox"/> remember me
             </div>
+            {props.error && <div className="form-error">
+                {props.error}
+            </div>}
+
             <div>
                 <button>Login</button>
             </div>
