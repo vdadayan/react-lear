@@ -26,15 +26,15 @@ export const setAuthUserData = (userId, email, login, isAuth) => ({type: SET_USE
 
 export const toAuth = () => {
     return (dispatch) => {
-        userAPI.auth()
-        .then(response => {
-            if (response.data.resultCode === 0 ) {
-                let {id, login, email,} = response.data.data;
+        return    userAPI.auth()
+            .then(response => {
+                if (response.data.resultCode === 0 ) {
+                    let {id, login, email,} = response.data.data;
 
-                dispatch(setAuthUserData(id, email, login, true))
-            }
-        })
-    }
+                    dispatch(setAuthUserData(id, email, login, true))
+                }
+            })
+        }
 }
 
 export const login = (email, password, rememberMe) => {
