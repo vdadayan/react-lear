@@ -1,10 +1,10 @@
 import React from 'react';
 import { Field, reduxForm } from 'redux-form';
+import { TextArea } from '../../FormsControls/FormControls';
+import { maxLengthCreator, requiredField } from '../../../Validator/validator';
 import DialogItem from './DialogItem/DialogItem';
 import Message from './Message/Message';
 import './Dialogs.scss';
-import { TextArea } from '../../FormsControls/FormControls';
-import { maxLengthCreator, requiredField } from '../../../Validator/validator';
 
 const Dialogs = (props) => {
 

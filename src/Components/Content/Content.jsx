@@ -16,7 +16,6 @@ class Content extends React.Component {
     }
 
     render() {
-        console.log(this.props);
         if (!this.props.initialized) {
             return <Preloader/>
         }
