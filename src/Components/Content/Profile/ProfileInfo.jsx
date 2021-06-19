@@ -2,8 +2,8 @@ import React from 'react';
 import Preloader from '../../Preloader/Preloader';
 import ProfileStatusWithHooks from '../Profile/ProfileStatusWithHooks'
 
-const ProfileInfo = (props) => {
-    if (!props.profile) {
+const ProfileInfo = ({profile, ...props}) => {
+    if (!profile) {
         return (
             <Preloader />
         )
@@ -11,7 +11,7 @@ const ProfileInfo = (props) => {
     return (
         <>
             <div>
-                <img src={props.profile.photos.large} alt="ava" />
+                <img src={profile.photos.large} alt="ava" />
                 <ProfileStatusWithHooks {...props}/>
             </div>
         </>
